@@ -94,17 +94,17 @@ def change():
     押下キーによって対応したこうかとんの画像を表示する
     """
 
-    change_dic = {
-        (0, 0):pg.transform.rotozoom(0), #デフォルト
-        (-5, 0):pg.transform.rotozoom(0),#左
-        (-5, +5):pg.transform.rotozoom(45),#左下
-        (0, +5):pg.transform.rotozoom(90),#下
-        (+5, +5):pg.transform.rotozoom(135),#右下
-        (+5,0):pg.transform.rotozoom(180),#右
-        (-5, -5):pg.transform.rotozoom(-45),#左上
-        (0, -5):pg.transform.rotozoom(-90),#上
-        (+5, -5):pg.transform.rotozoom(-135)#右上
-    }
+    #change_dic = {
+    #    (0, 0):pg.transform.rotozoom(kk_img, 0, 1.0), #デフォルト
+    #    (-5, 0):pg.transform.rotozoom(kk_img, 0, 1.0),#左
+    #    (-5, +5):pg.transform.rotozoom(kk_img, 45, 1.0),#左下
+    #    (0, +5):pg.transform.rotozoom(kk_img, 90, 1.0),#下
+    #    (+5, +5):pg.transform.rotozoom(kk_img, 135, 1.0),#右下
+    #    (+5,0):pg.transform.rotozoom(kk_img, 180, 1.0),#右
+    #    (-5, -5):pg.transform.rotozoom(kk_img, -45, 1.0),#左上
+    #    (0, -5):pg.transform.rotozoom(kk_img, -90, 1.0),#上
+    #    (+5, -5):pg.transform.rotozoom(kk_img, -135, 1.0)#右上
+    #}
     return 0
   
 
