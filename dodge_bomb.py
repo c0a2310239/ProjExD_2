@@ -43,7 +43,7 @@ def main():
     pg.draw.circle(bm_img, (255,0,0), (10,10), 10)       #練習2:爆弾の設定
     bm_rct = bm_img.get_rect()
     bm_rct.center = random.randint(0, WIDTH), random.randint(0, HEIGHT)
-    vx, vy = +5, +5
+    bm_vx, bm_vy = +5, +5
 
     clock = pg.time.Clock()
     tmr = 0
@@ -74,13 +74,13 @@ def main():
         if check_bound(kk_rct) != (True, True):
             kk_rct.move_ip(-sum_mv[0], -sum_mv[1])          #練習3
         screen.blit(kk_img, kk_rct)
-        bm_rct.move_ip(vx, vy)            #練習2:爆弾の描画と爆弾を動かす
+        bm_rct.move_ip(bm_vx, bm_vy)            #練習2:爆弾の描画と爆弾を動かす
         screen.blit(bm_img,bm_rct)
         yoko, tate = check_bound(bm_rct)     #練習3
         if not yoko:
-            vx *= -1
+            bm_vx *= -1
         if not tate:
-            vy *= -1
+            bm_vy *= -1
         
         pg.display.update()
         tmr += 1
