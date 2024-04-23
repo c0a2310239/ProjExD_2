@@ -67,6 +67,8 @@ def main():
             if key_lst[k]:
                 sum_mv[0] += v[0]
                 sum_mv[1] += v[1]
+                change()
+
        
         kk_rct.move_ip(sum_mv)
         if check_bound(kk_rct) != (True, True):
@@ -102,7 +104,7 @@ def change():
         (0, -5):pg.transform.rotozoom(-90),#上
         (+5, -5):pg.transform.rotozoom(-135)#右上
     }
-    
+    return 0
 
 def blackout(kk_rct,bm_rct,screen):
     """
