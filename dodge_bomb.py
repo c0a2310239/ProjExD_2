@@ -51,6 +51,11 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return
+            
+        if bm_rct.colliderect(bm_rct):       #練習4:ゲームオーバー判定
+            print("Game Over")
+            return
+        
         screen.blit(bg_img, [0, 0])
 
         key_lst = pg.key.get_pressed()
