@@ -84,6 +84,26 @@ def main():
         tmr += 1
         clock.tick(50)
 
+def change():
+    """
+    引数 :
+    戻り値 :なし
+    辞書でx,yの増減とrotozoomで回転させたこうかとんの画像を紐づけ
+    押下キーによって対応したこうかとんの画像を表示する
+    """
+    change_dic = {
+        (0, 0):pg.transform.rotozoom(0), #デフォルト
+        (-5, 0):pg.transform.rotozoom(0),#左
+        (-5, +5):pg.transform.rotozoom(45),#左下
+        (0, +5):pg.transform.rotozoom(90),#下
+        (+5, +5):pg.transform.rotozoom(135),#右下
+        (+5,0):pg.transform.rotozoom(180),#右
+        (-5, -5):pg.transform.rotozoom(-45),#左上
+        (0, -5):pg.transform.rotozoom(-90),#上
+        (+5, -5):pg.transform.rotozoom(-135)#右上
+    }
+    
+
 def blackout(kk_rct,bm_rct,screen):
     """
     引数: kk_rct, bm_rct, screen
@@ -95,7 +115,7 @@ def blackout(kk_rct,bm_rct,screen):
     bk_font = pg.font.Font(None, 80)       #フォントサイズを80に設定
     go = bk_font.render("Game Over", True, (255, 255, 255))  #白字でGameOverと書かれたSurfaceインスタンスを生成
     
-    if kk_rct.colliderect(bm_rct,):  
+    if kk_rct.colliderect(bm_rct):  
         screen.fill((0, 0, 0))   #スクリーンを暗転
         screen.blit(go, [800, 450])   #Game Overを描画
         screen.blit(bk_img, [750,450])   #泣いているこうかとんを表示
