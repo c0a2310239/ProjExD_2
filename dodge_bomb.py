@@ -104,6 +104,7 @@ def change():
         (0, -5):pg.transform.rotozoom(-90),#上
         (+5, -5):pg.transform.rotozoom(-135)#右上
     }
+    
     return 0
 
 def blackout(kk_rct,bm_rct,screen):
