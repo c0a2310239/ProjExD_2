@@ -2,6 +2,7 @@ import os
 import sys
 import random
 import pygame as pg
+import time
 
 
 WIDTH, HEIGHT = 1600, 900
@@ -52,7 +53,8 @@ def main():
             if event.type == pg.QUIT: 
                 return
             
-        if bm_rct.colliderect(bm_rct):       #練習4:ゲームオーバー判定
+        if kk_rct.colliderect(bm_rct):       #練習4:ゲームオーバー判定
+            blackout(kk_rct, bm_rct, screen)
             print("Game Over")
             return
         
@@ -67,15 +69,11 @@ def main():
                 sum_mv[1] += v[1]
        
         kk_rct.move_ip(sum_mv)
-
         if check_bound(kk_rct) != (True, True):
-            kk_rct.move_ip(-sum_mv[0], -sum_mv[1])           #練習3
-
+            kk_rct.move_ip(-sum_mv[0], -sum_mv[1])          #練習3
         screen.blit(kk_img, kk_rct)
-
         bm_rct.move_ip(vx, vy)            #練習2:爆弾の描画と爆弾を動かす
         screen.blit(bm_img,bm_rct)
-
         yoko, tate = check_bound(bm_rct)     #練習3
         if not yoko:
             vx *= -1
@@ -86,6 +84,24 @@ def main():
         tmr += 1
         clock.tick(50)
 
+def blackout(kk_rct,bm_rct,screen):
+    """
+    引数: kk_rct, bm_rct, screen
+    戻り値: なし
+    ゲームオーバーになったときに画面をブラックアウトし、
+    Game Overの文字を表示する関数
+    """
+    bk_img = pg.image.load("fig/8.png")   #泣きこうかとんをロード
+    bk_font = pg.font.Font(None, 80)       #フォントサイズを80に設定
+    go = bk_font.render("Game Over", True, (255, 255, 255))  #白字でGameOverと書かれたSurfaceインスタンスを生成
+    
+    if kk_rct.colliderect(bm_rct,):  
+        screen.fill((0, 0, 0))   #スクリーンを暗転
+        screen.blit(go, [800, 450])   #Game Overを描画
+        screen.blit(bk_img, [750,450])   #泣いているこうかとんを表示
+    
+    pg.display.update()
+    time.sleep(5)         #五秒待つ
 
 if __name__ == "__main__":
     pg.init()
