@@ -100,8 +100,8 @@ def change():
     #    (-5, +5):pg.transform.rotozoom(kk_img, 45, 1.0),#左下
     #    (0, +5):pg.transform.rotozoom(kk_img, 90, 1.0),#下
     #    (+5, +5):pg.transform.rotozoom(kk_img, 135, 1.0),#右下
-    #    (+5,0):pg.transform.rotozoom(kk_img, 180, 1.0),#右
-    #    (-5, -5):pg.transform.rotozoom(kk_img, -45, 1.0),#左上
+    #    (+5,0):pg.transform.rotozoom(kk_img, 180, 1.0),#右             xyの増減とこうかとんの画像を紐づける辞書
+    #    (-5, -5):pg.transform.rotozoom(kk_img, -45, 1.0),#左上　　
     #    (0, -5):pg.transform.rotozoom(kk_img, -90, 1.0),#上
     #    (+5, -5):pg.transform.rotozoom(kk_img, -135, 1.0)#右上
     #}
