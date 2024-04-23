@@ -93,6 +93,7 @@ def change():
     辞書でx,yの増減とrotozoomで回転させたこうかとんの画像を紐づけ
     押下キーによって対応したこうかとんの画像を表示する
     """
+
     change_dic = {
         (0, 0):pg.transform.rotozoom(0), #デフォルト
         (-5, 0):pg.transform.rotozoom(0),#左
@@ -104,12 +105,12 @@ def change():
         (0, -5):pg.transform.rotozoom(-90),#上
         (+5, -5):pg.transform.rotozoom(-135)#右上
     }
-    
     return 0
+  
 
 def blackout(kk_rct,bm_rct,screen):
     """
-    引数: kk_rct, bm_rct, screen
+    引数: こうかとん:rect, 爆弾:rect, screen:int
     戻り値: なし
     ゲームオーバーになったときに画面をブラックアウトし、
     Game Overの文字を表示する関数
