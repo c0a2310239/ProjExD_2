@@ -1,10 +1,11 @@
 import os
 import sys
+import random
 import pygame as pg
 
 
 WIDTH, HEIGHT = 1600, 900
-delta_dic = { #移動量と押下キーの辞書
+delta_dic = {                      #練習1:移動量と押下キーの辞書
     pg.K_UP:(0,-5), 
     pg.K_DOWN:(0,5), 
     pg.K_LEFT:(-5,0), 
@@ -20,8 +21,17 @@ def main():
     kk_img = pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 2.0)
     kk_rct = kk_img.get_rect()
     kk_rct.center = 900, 400
+
+    bm_img = pg.Surface((20, 20))
+    bm_img.set_colorkey((0, 0, 0))
+    pg.draw.circle(bm_img, (255,0,0), (10,10), 10)       #練習2:爆弾の設定
+    bm_rct = bm_img.get_rect()
+    bm_rct.center = random.randint(0, WIDTH), random.randint(0, HEIGHT)
+    vx, vy = +5, +5
+
     clock = pg.time.Clock()
     tmr = 0
+
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: 
@@ -30,20 +40,18 @@ def main():
 
         key_lst = pg.key.get_pressed()
         sum_mv = [0, 0]
-        for k,v in delta_dic.items():
+
+        for k,v in delta_dic.items():    #練習1:コードの簡略化
             if key_lst[k]:
                 sum_mv[0] += v[0]
                 sum_mv[1] += v[1]
-        #  if key_lst[pg.K_UP]:
-        #     sum_mv[1] -= 5
-        # if key_lst[pg.K_DOWN]:
-        #     sum_mv[1] += 5
-        # if key_lst[pg.K_LEFT]:
-        #     sum_mv[0] -= 5
-        # if key_lst[pg.K_RIGHT]:
-        #      sum_mv[0] += 5
+       
         kk_rct.move_ip(sum_mv)
         screen.blit(kk_img, kk_rct)
+
+        bm_rct.move_ip(vx, vy)           #練習2:爆弾の描画と爆弾を動かす
+        screen.blit(bm_img,bm_rct)
+        
         pg.display.update()
         tmr += 1
         clock.tick(50)
